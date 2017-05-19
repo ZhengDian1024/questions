@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>问卷</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="css/common.css"/>
+    <link rel="stylesheet" href="css/index.css"/>
+</head>
+<body ng-app="qst" ng-controller="indexCtrl">
+    <section>
+        <!-- 页头开始 -->
+        <header>
+            <h2 class="header_title" ng-bind="data.name"></h2>
+            <p>问卷概况：<span ng-bind="data.questions.length"></span>个问题 <span ng-bind="data.currentPage"></span>页 已被引用 <span ng-bind="data.quote"></span>次</p>
+            <div class="clearfix">
+                <a href="javascript:;" class="read_btn">预览</a>
+            </div>
+            <p>
+                您好，我们是XXX，我们正在进行一项关于某车险广告语测试的调查，想邀请您用几分钟时间帮忙填答这份问卷。本问卷实行匿名制，所有数据只用于统计分析，请您放心填写。题目选项无对错之分，请您按自己的实际情况填写。谢谢您的帮助。
+            </p>
+            <div class="blue_tip">
+                本页为该问卷的详细内容，不可回答，仅供预览。如果您要使用该问卷，请点击页面下方的引用按钮。
+            </div>
+        </header>
+        <!-- 页头结束 -->
+
+        <!-- 主体开始 -->
+        <form class="main" id="questionForm">
+            <div class="question_items" ng-repeat="item in list">
+                <p class="questions">Q <span ng-bind="$index+1"></span>: <span ng-bind="item.question"></span>
+                    <span ng-if="item.type=='singleSelection'">（单选）</span> <span ng-if="item.type=='MultipleSelection'">（多选）</span>
+                </p>
+                <div ng-if="item.type=='text'">
+                    <input type="text" class="form-control" name="{{item.name}}"/>
+                </div>
+                <ul class="answers" ng-if="item.type=='singleSelection'">
+                    <li ng-repeat="li in item.answers">
+                        <label><input type="radio" name="{{item.name}}" value="{{$index+1}}"/><span ng-bind="li.answer"></span></label>
+                    </li>
+                </ul>
+                <ul class="answers" ng-if="item.type=='MultipleSelection'">
+                    <li ng-repeat="li in item.answers">
+                        <label><input type="checkbox" name="{{item.name}}" value="{{$index+1}}"/><span ng-bind="li.answer"></span></label>
+                    </li>
+                </ul>
+                <div class="custom" ng-if="item.type=='custom'">
+                    <div ng-repeat="cus in item.answers">
+                        <p class="questions">Q <span ng-bind="$index+1"></span>: <span ng-bind="cus.question"></span>
+                            <span ng-if="cus.type=='singleSelection'">（单选）</span> <span ng-if="cus.type=='MultipleSelection'">（多选）</span>
+                        </p>
+                        <div ng-if="cus.type=='text'">
+                            <input type="text" class="form-control" name="{{cus.name}}"/>
+                        </div>
+                        <ul class="answers" ng-if="cus.type=='singleSelection'">
+                            <li ng-repeat="li in cus.answers">
+                                <label><input type="radio" name="{{cus.name}}" value="{{$index+1}}"/><span ng-bind="li.answer"></span></label>
+                            </li>
+                        </ul>
+                        <ul class="answers" ng-if="cus.type=='MultipleSelection'">
+                            <li ng-repeat="li in cus.answers">
+                                <label><input type="checkbox" name="{{cus.name}}" value="{{$index+1}}"/><span ng-bind="li.answer"></span></label>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="row text-center">
+                <button type="button" class="btn btn-info btn-lg" ng-click="submitForm()">提交</button>
+            </div>
+        </form>
+        <!-- 主体结束 -->
+
+
+
+
+
+    </section>
+<script src="js/plug/jquery-1.11.1.min.js"></script>
+<script src="js/plug/mock.js"></script>
+<!--<script src="js/plug/bootstrap.js"></script>-->
+<script src="js/plug/angular.js"></script>
+<script src="js/plug/angular-route.js"></script>
+<script src="js/module.js"></script>
+<script src="js/index.js"></script>
+</body>
+</html>

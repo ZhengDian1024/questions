@@ -1,0 +1,82 @@
+@charset "UTF-8";
+/********页头开始*******/
+section{
+    width:930px;
+    margin:0px auto;
+}
+header{
+    padding-bottom: 25px;
+    border-bottom:2px solid #ccc;
+    margin-bottom:25px;
+    padding-left:5px;
+}
+.header_title{
+    font-weight:normal;
+    font-size:18px;
+    text-align: center;
+}
+.read_btn{
+    float:right;
+    padding:0px 10px;
+    color:#20A6FF;
+    border:1px solid #20A6FF;
+    margin-right:5px;
+}
+.read_btn:hover{
+    color:#fff;
+    background-color:#20A6FF;
+}
+header>p{
+    margin-top:15px;
+}
+.blue_tip{
+    color:#1998FF;
+    margin-top:25px;
+}
+/********页头结束*******/
+
+/********主体开始*******/
+.answers{
+    color:#999;
+    line-height:30px;
+    padding-left:10px;
+}
+.answers input[type='radio']{
+    margin-right:5px;
+    position: relative;
+    top:1px;
+}
+.answers input[type='checkbox']{
+    margin-right:5px;
+    position: relative;
+    top:1px;
+}
+.questions{
+    margin-bottom:8px;
+    margin-top:5px;
+}
+label{
+    font-weight:normal;
+}
+.custom{
+    padding-left:8px;
+}
+
+/********主体结束*******/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
